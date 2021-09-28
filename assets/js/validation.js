@@ -1,13 +1,14 @@
 let formName=document.querySelector("#surname");
 let formNamelimit=document.querySelector("#surname");
 let formEmail=document.querySelector("#email");
-
+let formNumber = document.querySelector("#subject")
 let formMessage=document.querySelector('#message');
 
 
 let nameAlert=document.querySelector("#name-alert");
 let emailAlert=document.querySelector("#email-alert");
 let messageAlert = document.querySelector('#message-alert')
+let numberAlert = document.querySelector("#number-alert")
 
 let button=document.querySelector("#form-button");
 button.style.background="grey";
@@ -17,23 +18,32 @@ let checkName=false;
 let checkNamelength=false;
 let checkEmail=false;
 let checkmessage=false;
+let checknumber=false;
 
 formName.addEventListener("keyup", function(event){
     let name=event.target.value;
     nameAlert.style.display="block";
     
-    let rgxName=/^[^\d]+$/;
+    let rgxName=/[A-Za-z]/;
+    let nameother =/[0-9]/g;
+    name=name.replace(nameother,function(e){
+        return e='';
+    })
+
+    event.target.value=name;
 
     if(name.match(rgxName)){
+        
         nameAlert.style.display="none";
-        nameAlert.innerHTML="enter name only"
+        nameAlert.innerHTML=" "
         checkName=true;
     }
     else if(name==""){
-        nameAlert.style.display="none";
+        nameAlert.innerHTML=' '
         checkName=false;
     }
     else{
+        nameAlert.innerHTML='only enter name'
         checkName=false;
     }
 
@@ -82,11 +92,24 @@ formMessage.addEventListener("keyup",function(e){
         checkmessage=true;
     }
 })
+formNumber.addEventListener("keyup",function(e){
+    let numbers = e.target.value;
+    let numberLength = numbers.length
 
+    if(numberLength<"10"){
+        numberAlert.innerHTML='minimum 10 numbers'
+        checknumber=false;
 
+        
+    }else{
+        numberAlert.innerHTML=' '
+        checknumber=true;
+    }
+
+})
 
 document.addEventListener("keyup",function(){
-    if(checkEmail && checkName && checkNamelength && checkmessage ){
+    if(checkEmail && checkName && checkNamelength && checkmessage && checknumber ){
         button.disabled=false;
         button.style.background="#5faee3";
         button.style.color="white"
@@ -117,4 +140,5 @@ $("#submit-form").submit((e)=>{
     
             }
         })
+})
 })
