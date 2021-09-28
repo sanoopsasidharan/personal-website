@@ -89,9 +89,12 @@ setInterval(()=>{
    if(checkEmail && checkName && checkNamelength && checkmessage ){
        button.disabled=false;
        button.style.background="#5faee3";
+       button.style.color="white"
+
    }else{
     button.disabled=true;
     button.style.background="grey";
+    button.style.color="#b8b8b8"
    }
 }, 100);
 
