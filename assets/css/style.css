@@ -1406,10 +1406,10 @@ section {
 
   /* My Style */
 
-  .valid-alert{
+/*   .valid-alert{
     color: red;
     font-size: 11px;
-  }
+  } */
 
   #name-alert{
     display: none;
@@ -1418,7 +1418,7 @@ section {
   #email-alert{
     display:none;
   }
-  .namelength{
+/*   .namelength{
     color: red;
     font-size: 11px;
-  }
+  } */
